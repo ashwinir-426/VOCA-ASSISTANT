@@ -1,123 +1,63 @@
-import sqlite3
 import csv
+import sqlite3
 
 con = sqlite3.connect("voca.db")
 cursor = con.cursor()
 
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS sys_command (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     name TEXT UNIQUE,
-#     path TEXT
-# )
-# """)
+# query = "CREATE TABLE IF NOT EXISTS sys_command(id integer primary key, name VARCHAR(100), path VARCHAR(1000))"
+# cursor.execute(query)
 
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS web_command (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     name TEXT UNIQUE,
-#     url TEXT
-# )
-# """)
+#query = "INSERT INTO sys_command VALUES (null,'google chrome', 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe')"
+#cursor.execute(query)
+#con.commit()
 
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS contacts (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     name TEXT,
-#     mobile_no TEXT,
-#     email TEXT
-# )
-# """)
+# query = "CREATE TABLE IF NOT EXISTS web_command(id integer primary key, name VARCHAR(100), url VARCHAR(1000))"
+# cursor.execute(query)
 
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS chat_history (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     user_text TEXT,
-#     assistant_reply TEXT,
-#     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-# )
-# """)
-
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS system_settings (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     command_name TEXT,
-#     action TEXT,
-#     value INTEGER
-# )
-# """)
-
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS user_profile (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     name TEXT,
-#     email TEXT,
-#     city TEXT,
-#     designation TEXT
-# )
-# """)
-
-# cursor.execute("""
-# CREATE TABLE IF NOT EXISTS command_logs (
-#     id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     command_text TEXT,
-#     action_taken TEXT,
-#     status TEXT,
-#     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-# )
-# """)
-
-# cursor.execute("DROP TABLE IF EXISTS command_logs")
-
-# cursor.execute("DROP TABLE IF EXISTS chat_history")
-
-# ===============================
-# # Insert system app
-# cursor.execute(
-#     "INSERT OR IGNORE INTO sys_command VALUES (null, ?, ?)",
-#     ("notepad", "C:\\Windows\\System32\\notepad.exe")
-# )
-
-# # Insert website
-# cursor.execute(
-#     # "INSERT INTO web_command VALUES (null, ?, ?)",
-#     # ("amazon", "https://www.amazon.in/")
-#      "INSERT INTO web_command VALUES (null, ?, ?)",
-#      ("whatsapp", "https://web.whatsapp.com/")
-# )
-
-# # Insert contact
-# cursor.execute(
-#     "INSERT OR IGNORE INTO contacts VALUES (null, ?, ?, ?)",
-#     ("kevin", "+91 91382 14118", "rahul@gmail.com")
-# )
-
-# ---- SYSTEM SETTINGS
-# cursor.execute(
-#     "INSERT INTO system_settings VALUES (null, ?, ?, ?)",
-#     ("volume_down", "decrease", 20)
-# )
-
-# cursor.execute(
-#     "INSERT INTO system_settings VALUES (null, ?, ?, ?)",
-#     ("brightness_up", "increase", 30)
-# )
-
-# galat app entry remove
-# cursor.execute(
-#     "DELETE FROM web_command WHERE name = ?",
-#     ("youtube",)
-# )
+#query = "INSERT INTO web_command VALUES (null,'wikipedia', 'https://www.wikipedia.org/')"
+#cursor.execute(query)
+#con.commit()
 
 
-# # Insert user profile (one time)
-# cursor.execute(
-#     "INSERT OR IGNORE INTO user_profile VALUES (null, ?, ?, ?, ?)",
-#     ("Ashwini", "ashwinirathore@email.com", "India", "Engineering Student")
-# )
+# testing module
+# app_name = "android studio"
+# cursor.execute('SELECT path FROM sys_command WHERE name IN (?)', (app_name,))
+# results = cursor.fetchall()
+# print(results[0][0])
 
-# COMMIT & CLOSE
-con.commit()
-con.close()
+# Create a table with the desired columns
+# cursor.execute('''CREATE TABLE IF NOT EXISTS contacts (id integer primary key, name VARCHAR(200), mobile_no VARCHAR(255), email VARCHAR(255) NULL, address VARCHAR(255) NULL)''')
 
-print("VOCA database ready with all required tables")
+
+# Specify the column indices you want to import (0-based index)
+# Example: Importing the 1st and 3rd columns
+# desired_columns_indices = [0, 30]
+
+# # Read data from CSV and insert into SQLite table for the desired columns
+# with open('contacts.csv', 'r', encoding='utf-8') as csvfile:
+#     csvreader = csv.reader(csvfile)
+#     for row in csvreader:
+#         selected_data = [row[i] for i in desired_columns_indices]
+#         cursor.execute(''' INSERT INTO contacts (id, 'name', 'mobile_no') VALUES (null, ?, ?);''', tuple(selected_data))
+
+# # Commit changes and close connection
+# con.commit()
+# con.close()
+
+# query = "INSERT INTO contacts VALUES (null,'pawan', '1234567890', 'null')"
+# cursor.execute(query)
+# con.commit()
+
+# query = 'kunal'
+# query = query.strip().lower()
+
+# cursor.execute("SELECT mobile_no FROM contacts WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?", ('%' + query + '%', query + '%'))
+# results = cursor.fetchall()
+# print(results[0][0])
+
+# Adding personal info table
+# query = "CREATE TABLE IF NOT EXISTS info(name VARCHAR(100), designation VARCHAR(50),mobileno VARCHAR(40), email VARCHAR(200), city VARCHAR(300))"
+# cursor.execute(query)
+
+# Add Column in contacts table
+# cursor.execute("ALTER TABLE contacts ADD COLUMN address VARCHAR(255)")

@@ -1,29 +1,12 @@
 import os
-import eel
+import eel 
 
-from engine.features import *
-from engine.command import *
-#def start():
-    
-eel.init("www")
+from engine.features import*
+from engine.command import*
 
-playAssistantSound()
-# @eel.expose
-# def init():
-#         subprocess.call([r'device.bat'])
-#         eel.hideLoader()
-        # speak("Ready for Face Authentication")
-        # flag = recoganize.AuthenticateFace()
-        # if flag == 1:
-        #     eel.hideFaceAuth()
-        #     speak("Face Authentication Successful")
-        #     eel.hideFaceAuthSuccess()
-        #     speak("Hello, Welcome Sir, How can i Help You")
-        # eel.hideStart()
-        # playAssistantSound()
-        # else:
-        
-        # speak("Face Authentication Fail")
-os.system('start msedge.exe --app="http://localhost:8000/index.html"')
+def start():
+    eel.init("www")
+    # playAssistantSound()
+    eel.start('index.html', mode='chrome', host='localhost', block=True)
 
-eel.start('index.html', mode=None, host='localhost', block=True)
+start()
