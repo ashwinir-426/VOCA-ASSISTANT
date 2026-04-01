@@ -7,9 +7,9 @@ cursor = con.cursor()
 # query = "CREATE TABLE IF NOT EXISTS sys_command(id integer primary key, name VARCHAR(100), path VARCHAR(1000))"
 # cursor.execute(query)
 
-#query = "INSERT INTO sys_command VALUES (null,'google chrome', 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe')"
-#cursor.execute(query)
-#con.commit()
+# query = "INSERT INTO sys_command VALUES (null,'whatsapp', 'C:\\Users\\hp\\AppData\\Local\\WhatsApp\\WhatsApp.exe')"
+# cursor.execute(query)
+# con.commit()
 
 # query = "CREATE TABLE IF NOT EXISTS web_command(id integer primary key, name VARCHAR(100), url VARCHAR(1000))"
 # cursor.execute(query)
@@ -17,6 +17,9 @@ cursor = con.cursor()
 #query = "INSERT INTO web_command VALUES (null,'wikipedia', 'https://www.wikipedia.org/')"
 #cursor.execute(query)
 #con.commit()
+# query = "DELETE FROM web_command WHERE name = 'whatsapp'"
+# cursor.execute(query)
+# con.commit()
 
 
 # testing module

@@ -68,7 +68,7 @@ function PlayAssistant(message) {
         $("#SiriWave").attr("hidden", false);
         eel.allCommands(message);
         $("#chatbox").val("");
-        $("#micBtn").attr("hidden", false);
+        $("#MicBtn").attr("hidden", false);
         $("#SendBtn").attr("hidden", true);
 
     }
@@ -77,11 +77,11 @@ function PlayAssistant(message) {
 
 function ShowHideButton(message) {
     if (message.length == 0) {
-        $("#micBtn").attr("hidden", false);
+        $("#MicBtn").attr("hidden", false);
         $("#SendBtn").attr("hidden", true);
     }
     else {
-        $("#micBtn").attr("hidden", true);
+        $("#MicBtn").attr("hidden", true);
         $("#SendBtn").attr("hidden", false);
     }
 }

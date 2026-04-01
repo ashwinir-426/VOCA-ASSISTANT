@@ -38,4 +38,10 @@ body {
   opacity: 1;
 }
 
-
+/* new */
+@media (max-width: 768px) {
+  .square {
+    width: 250px;
+    height: 250px;
+  }
+}
