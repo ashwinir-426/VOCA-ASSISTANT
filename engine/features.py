@@ -20,7 +20,10 @@ import pyautogui
 from urllib.parse import quote
 import screen_brightness_control as sbc
 
+
+
 waiting_for = None
+pending_action = None
 # import time
 # time.sleep(1)
 # from engine.command import takecommand 
@@ -604,6 +607,7 @@ def chatBot(query):
 # SYSTEM SETTINGS
 def systemControl(query):
     query = query.lower()
+    global pending_action
 
     # 🔊 Volume Control
     if "volume up" in query or "increase volume" in query:
@@ -629,16 +633,31 @@ def systemControl(query):
 
     # 🖥 System Control
     elif "shutdown" in query:
+        # global pending_action
+        pending_action = "shutdown"  
         speak("Are you sure you want to shutdown?")
 
         from engine.command import takecommand
         response = takecommand()
 
         if "yes" in response:
-            speak("Shutting down system")
-            os.system("shutdown /s /t 1")
+            #global pending_action
+
+            if pending_action == "shutdown":
+                speak("Shutting down system")
+                os.system("shutdown /s /t 1")
+
+            elif pending_action == "restart":
+                speak("Restarting system")
+                os.system("shutdown /r /t 1")
+                print("Detected response:", response)
+
+            pending_action = None
+            # speak("Shutting down system")
+            # os.system("shutdown /s /t 1")
         else:
             speak("Shutdown cancelled")
+            pending_action = None
 
     elif "restart" in query:
         speak("Do you want to restart the system?")
